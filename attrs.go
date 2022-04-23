@@ -16,7 +16,7 @@ func Confirm(msg string) g.Node {
 }
 
 func Disable() g.Node {
-	return g.Attr("hx-disable ")
+	return g.Attr("hx-disable")
 }
 
 func Disinherit(val string) g.Node {
