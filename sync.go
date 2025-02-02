@@ -1,6 +1,6 @@
 package htmx
 
-import g "github.com/maragudk/gomponents"
+import g "maragu.dev/gomponents"
 
 const (
 	SyncDrop       = "drop"

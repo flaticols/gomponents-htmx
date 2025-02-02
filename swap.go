@@ -1,6 +1,6 @@
 package htmx
 
-import g "github.com/maragudk/gomponents"
+import g "maragu.dev/gomponents"
 
 const (
 	SwapInnerHTML   = "innerHTML"   //The default, replace the inner html of the target element

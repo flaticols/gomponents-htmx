@@ -1,6 +1,6 @@
 package htmx
 
-import g "github.com/maragudk/gomponents"
+import g "maragu.dev/gomponents"
 
 func ServerSentEvents(path string) g.Node {
 	return g.Attr("sse-connect", path)

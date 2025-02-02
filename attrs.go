@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strconv"
 
-	g "github.com/maragudk/gomponents"
+	g "maragu.dev/gomponents"
 )
 
 func Boost(val bool) g.Node {
