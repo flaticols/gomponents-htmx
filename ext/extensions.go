@@ -1,8 +1,8 @@
 package ext
 
 import (
-	g "github.com/maragudk/gomponents"
-	"github.com/maragudk/gomponents/html"
+	g "maragu.dev/gomponents"
+	"maragu.dev/gomponents/html"
 )
 
 const (
@@ -24,7 +24,7 @@ func ClassTools() g.Node {
 }
 
 func ServerSentEvents() g.Node {
-	return html.Script(html.Src("https://unpkg.com/htmx.org/dist/ext/sse.js"),
+	return html.Script(html.Src("https://unpkg.com/htmx-ext-sse@2.2.2/sse.js"),
 		g.Attr("crossorigin", "anonymous"),
 		g.Attr("defer"),
 	)
