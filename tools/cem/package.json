@@ -1,5 +1,5 @@
 {
-  "name": "@anthropic/cem-generator",
+  "name": "@flaticols/cem",
   "version": "1.0.0",
   "description": "Custom Elements Manifest generator using TypeScript compiler API with full inheritance support",
   "type": "module",

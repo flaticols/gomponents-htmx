@@ -14,13 +14,13 @@ Custom Elements Manifest generator using TypeScript compiler API with full class
 
 ```bash
 # Bun
-bun add @anthropic/cem-generator
+bun add @flaticols/cem
 
 # npm
-npm install @anthropic/cem-generator
+npm install @flaticols/cem
 
 # JSR
-deno add @anthropic/cem-generator
+deno add @flaticols/cem
 ```
 
 ## CLI Usage
@@ -45,7 +45,7 @@ bun run cem-generator -o - src/**/*.ts
 ## Programmatic Usage
 
 ```typescript
-import { Analyzer, type Manifest } from "@anthropic/cem-generator";
+import { Analyzer, type Manifest } from "@flaticols/cem";
 
 const files = ["src/my-element.ts"];
 const baseDir = process.cwd();
