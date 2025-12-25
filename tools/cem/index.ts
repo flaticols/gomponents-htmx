@@ -18,7 +18,6 @@ import ts from "typescript";
 import { parseArgs } from "util";
 import { writeFileSync } from "fs";
 import { resolve, relative } from "path";
-import { glob } from "glob";
 
 // ============================================================================
 // Manifest Types (Custom Elements Manifest v2.1.0)
@@ -1234,11 +1233,13 @@ Examples:
     process.exit(values.help ? 0 : 1);
   }
 
-  // Expand globs
+  // Expand globs using Bun's built-in Glob
   const files: string[] = [];
   for (const pattern of positionals) {
-    const matches = await glob(pattern);
-    files.push(...matches.map((f) => resolve(f)));
+    const g = new Bun.Glob(pattern);
+    for await (const file of g.scan({ cwd: process.cwd(), absolute: true })) {
+      files.push(file);
+    }
   }
 
   if (files.length === 0) {
