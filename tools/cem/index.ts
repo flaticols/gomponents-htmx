@@ -23,13 +23,13 @@ import { resolve, relative } from "path";
 // Manifest Types (Custom Elements Manifest v2.1.0)
 // ============================================================================
 
-interface Manifest {
+export interface Manifest {
   schemaVersion: string;
   readme?: string;
   modules: Module[];
 }
 
-interface Module {
+export interface Module {
   kind: "javascript-module";
   path: string;
   summary?: string;
@@ -39,14 +39,14 @@ interface Module {
   deprecated?: string | boolean;
 }
 
-type Declaration =
+export type Declaration =
   | ClassDeclaration
   | CustomElementDeclaration
   | FunctionDeclaration
   | VariableDeclaration
   | MixinDeclaration;
 
-interface ClassDeclaration {
+export interface ClassDeclaration {
   kind: "class";
   name: string;
   summary?: string;
@@ -59,7 +59,7 @@ interface ClassDeclaration {
   typeParameters?: TypeParameter[];
 }
 
-interface CustomElementDeclaration extends ClassDeclaration {
+export interface CustomElementDeclaration extends ClassDeclaration {
   tagName?: string;
   customElement: true;
   attributes?: Attribute[];
@@ -69,7 +69,7 @@ interface CustomElementDeclaration extends ClassDeclaration {
   events?: Event[];
 }
 
-interface FunctionDeclaration {
+export interface FunctionDeclaration {
   kind: "function";
   name: string;
   summary?: string;
@@ -81,7 +81,7 @@ interface FunctionDeclaration {
   deprecated?: string | boolean;
 }
 
-interface VariableDeclaration {
+export interface VariableDeclaration {
   kind: "variable";
   name: string;
   summary?: string;
@@ -93,7 +93,7 @@ interface VariableDeclaration {
   readonly?: boolean;
 }
 
-interface MixinDeclaration {
+export interface MixinDeclaration {
   kind: "mixin";
   name: string;
   summary?: string;
@@ -106,9 +106,9 @@ interface MixinDeclaration {
   deprecated?: string | boolean;
 }
 
-type ClassMember = ClassField | ClassMethod;
+export type ClassMember = ClassField | ClassMethod;
 
-interface ClassField {
+export interface ClassField {
   kind: "field";
   name: string;
   summary?: string;
@@ -125,7 +125,7 @@ interface ClassField {
   reflects?: boolean;
 }
 
-interface ClassMethod {
+export interface ClassMethod {
   kind: "method";
   name: string;
   summary?: string;
@@ -140,18 +140,18 @@ interface ClassMethod {
   deprecated?: string | boolean;
 }
 
-interface Reference {
+export interface Reference {
   name: string;
   package?: string;
   module?: string;
 }
 
-interface Type {
+export interface Type {
   text: string;
   references?: TypeReference[];
 }
 
-interface TypeReference {
+export interface TypeReference {
   name?: string;
   package?: string;
   module?: string;
@@ -159,14 +159,14 @@ interface TypeReference {
   end?: number;
 }
 
-interface TypeParameter {
+export interface TypeParameter {
   name: string;
   default?: string;
   extends?: string;
   description?: string;
 }
 
-interface Parameter {
+export interface Parameter {
   name: string;
   summary?: string;
   description?: string;
@@ -176,13 +176,13 @@ interface Parameter {
   rest?: boolean;
 }
 
-interface ReturnType {
+export interface ReturnType {
   type?: Type;
   summary?: string;
   description?: string;
 }
 
-interface Attribute {
+export interface Attribute {
   name: string;
   summary?: string;
   description?: string;
@@ -193,7 +193,7 @@ interface Attribute {
   deprecated?: string | boolean;
 }
 
-interface CSSCustomProperty {
+export interface CSSCustomProperty {
   name: string;
   summary?: string;
   description?: string;
@@ -203,7 +203,7 @@ interface CSSCustomProperty {
   deprecated?: string | boolean;
 }
 
-interface CSSPart {
+export interface CSSPart {
   name: string;
   summary?: string;
   description?: string;
@@ -211,7 +211,7 @@ interface CSSPart {
   deprecated?: string | boolean;
 }
 
-interface Slot {
+export interface Slot {
   name: string;
   summary?: string;
   description?: string;
@@ -219,7 +219,7 @@ interface Slot {
   deprecated?: string | boolean;
 }
 
-interface Event {
+export interface Event {
   name: string;
   summary?: string;
   description?: string;
@@ -228,14 +228,14 @@ interface Event {
   deprecated?: string | boolean;
 }
 
-interface Export {
+export interface Export {
   kind: "js" | "custom-element-definition";
   name: string;
   declaration?: Reference;
   deprecated?: string | boolean;
 }
 
-interface SourceReference {
+export interface SourceReference {
   href?: string;
 }
 
@@ -259,7 +259,7 @@ interface ClassInfo {
   typeParameters?: TypeParameter[];
 }
 
-class Analyzer {
+export class Analyzer {
   private program: ts.Program;
   private checker: ts.TypeChecker;
   private classes = new Map<string, ClassInfo>();
@@ -1269,7 +1269,10 @@ Examples:
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Only run CLI when executed directly
+if (import.meta.main) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
