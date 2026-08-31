@@ -7,8 +7,7 @@ import (
 
 //IncludeHtmx added the script tag with htmx
 func IncludeHtmx() g.Node {
-	return html.Script(html.Src("https://unpkg.com/htmx.org@1.7.0"),
-		g.Attr("integrity", "sha384-EzBXYPt0/T6gxNp0nuPtLkmRpmDBbjg6WmCUZRLXBBwYYmwAUxzlSGej0ARHX0Bo"),
+	return html.Script(html.Src("https://unpkg.com/htmx.org@1.8.2"),
 		g.Attr("crossorigin", "anonymous"),
 		g.Attr("defer"),
 	)
